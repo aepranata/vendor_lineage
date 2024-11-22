@@ -56,6 +56,7 @@ function breakfast()
             lunch lineage_$target-$aosp_target_release-$variant
         fi
     fi
+    make installclean
     return $?
 }
 
