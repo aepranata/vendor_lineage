@@ -16,7 +16,7 @@
 #
 
 # $1=TARGET_DEVICE, $2=PRODUCT_OUT, $3=FILE_NAME
-existingOTAjson=./device/atiga/ota/$1/updates.json
+existingOTAjson=./device/atiga/ota/$1/update.json
 output=$2/$1.json
 
 # cleanup old file
@@ -31,9 +31,9 @@ if [ -f $existingOTAjson ]; then
         maintainer=`grep -n "\"maintainer\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
         oem=`grep -n "\"oem\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
         device=`grep -n "\"device\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
-        key=`grep -n "\"key\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs
+        key=`grep -n "\"key\"" $existingOTAjson | cut -d ":" -f 3 | sed 's/"//g' | sed 's/,//g' | xargs`
         filename=$3
-        version=`echo "$3" | cut -d '-' -f 2
+        version=`echo "$3" | cut -d '-' -f 2`
         buildprop=$2/system/build.prop
         linenr=`grep -n "ro.system.build.date.utc" $buildprop | cut -d':' -f1`
         timestamp=`sed -n $linenr'p' < $buildprop | cut -d'=' -f2`
@@ -60,7 +60,7 @@ if [ -f $existingOTAjson ]; then
             "version": "'$version'",
             "filename": "'$filename'",
             "download": "'$3'",
-            "key": "$key",
+            "key": "'$key'",
             "timestamp": '$timestamp',
             "md5": "'$md5'",
             "sha256": "'$sha256'",
@@ -73,7 +73,7 @@ if [ -f $existingOTAjson ]; then
 }' >> $output
 else
         filename=$3
-        version=`echo "$3" | cut -d '-' -f 2
+        version=`echo "$3" | cut -d '-' -f 2`
         buildprop=$2/system/build.prop
         linenr=`grep -n "ro.system.build.date.utc" $buildprop | cut -d':' -f1`
         timestamp=`sed -n $linenr'p' < $buildprop | cut -d'=' -f2`
