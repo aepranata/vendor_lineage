@@ -82,8 +82,7 @@ PRODUCT_PACKAGES += \
     IconShapeTaperedRectOverlay \
     IconShapeTeardropOverlay \
     IconShapeVesselOverlay \
-    LineageNavigationBarNoHint \
-    NavigationBarMode2ButtonOverlay
+    LineageNavigationBarNoHint
 
 # Legal
 PRODUCT_SYSTEM_PROPERTIES += \
