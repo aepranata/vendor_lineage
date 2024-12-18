@@ -20,6 +20,7 @@ PRODUCT_PACKAGES += \
     Glimpse \
     LatinIME
 
+ifeq ($(TARGET_NO_LAUNCHER),)
 ifeq ($(PRODUCT_TYPE), go)
 PRODUCT_PACKAGES += \
     TrebuchetQuickStepGo
@@ -32,6 +33,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     TrebuchetQuickStep
+endif
 endif
 
 PRODUCT_PACKAGES += \
