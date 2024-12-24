@@ -4,6 +4,6 @@
 //
 
 runtime_resource_overlay {
-    name: "TrebuchetOverlay",
+    name: "AtigaLauncherOverlay",
     product_specific: true,
 }
