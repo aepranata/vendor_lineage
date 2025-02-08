@@ -1,6 +1,9 @@
 # Allow vendor/extra to override any property by setting it first
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
+# Google Apps
+$(call inherit-product-if-exists, vendor/gms/products/gms.mk)
+
 PRODUCT_BRAND ?= LineageOS
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
